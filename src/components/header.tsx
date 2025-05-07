@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -6,37 +7,36 @@ const Header = () => {
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
         <div className="text-lg font-bold">
-          <a href="/" className="hover:text-gray-400">
+          <Link to="/" className="hover:text-gray-400">
             G3 Blog Post Management
-          </a>
+          </Link>
         </div>
 
-        {/* Navigation Links */}
         <nav className="space-x-6">
-          <a
-            href="#home"
+          <Link
+            to="/"
             className="text-gray-300 hover:text-white transition-colors"
           >
             Home
-          </a>
-          <a
-            href="#blogs"
+          </Link>
+          <Link
+            to="/blogs"
             className="text-gray-300 hover:text-white transition-colors"
           >
             Blogs
-          </a>
-          <a
-            href="#about"
+          </Link>
+          <Link
+            to="/about"
             className="text-gray-300 hover:text-white transition-colors"
           >
             About
-          </a>
-          <a
-            href="#contact"
+          </Link>
+          <Link
+            to="/contact"
             className="text-gray-300 hover:text-white transition-colors"
           >
             Contact
-          </a>
+          </Link>
         </nav>
       </div>
     </header>
