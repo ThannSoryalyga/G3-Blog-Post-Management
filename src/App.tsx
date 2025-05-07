@@ -1,23 +1,23 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/header";
-import Footer from "./components/footer";
-import Home from "./pages/home";
+import About from "./pages/about";
+import Blogs from "./pages/blogs";
+import Contact from "./pages/contact";
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Header />
-      <Routes>
-      <Route path="/" element={<Home />} />   
-      <Route path="/home" element={<Home />} />
-      <Route path="/about" element={<div>About</div>} />
-      <Route path="/blogs" element={<div>Blogs</div>} />
-      <Route path="/contact" element={<div>Contact</div>} />
-          
-      </Routes>
-      <Footer />
+      <div className="container mx-auto mt-8">
+        <Routes>
+          <Route path="/" element={<h1 className="text-3xl font-bold">Welcome to G3 Blog Post Management</h1>} />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </div>
     </Router>
   );
-}
+};
 
 export default App;
