@@ -3,7 +3,8 @@ import Header from "./components/header";
 import About from "./pages/about";
 import Blogs from "./pages/blogs";
 import Contact from "./pages/contact";
-// import Home from "./pages/home";
+import Home from "./pages/home";
+import SponsorPage from "./pages/ SponsorPage"; // ✅ New import
 
 const App = () => {
   return (
@@ -11,10 +12,11 @@ const App = () => {
       <Header />
       <div className="container mx-auto mt-8">
         <Routes>
-          {/* <Route path="/home" element={<Home />} /> */}
+          <Route path="/home" element={<Home />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/sponsor" element={<SponsorPage />} /> {/* ✅ New route */}
         </Routes>
       </div>
     </Router>
@@ -22,3 +24,4 @@ const App = () => {
 };
 
 export default App;
+
