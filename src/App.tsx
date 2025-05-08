@@ -3,7 +3,7 @@ import Header from "./components/header";
 import About from "./pages/about";
 import Blogs from "./pages/blogs";
 import Contact from "./pages/contact";
-
+import Card from "./components/card";
 const App = () => {
   return (
     <Router>
@@ -14,6 +14,7 @@ const App = () => {
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/card" element={<Card />} />
         </Routes>
       </div>
     </Router>
