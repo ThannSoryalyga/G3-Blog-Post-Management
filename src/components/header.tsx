@@ -90,7 +90,9 @@ const Header = () => {
         >
           <div
             className={`w-6 h-6 rounded-full transform transition-transform duration-300 ${
-              darkMode ? "bg-gray-800 translate-y-0" : "bg-white translate-y-0"
+              darkMode
+                ? "bg-gray-800 translate-y-0"
+                : "bg-white translate-y-0"
             }`}
           >
             {darkMode ? (
