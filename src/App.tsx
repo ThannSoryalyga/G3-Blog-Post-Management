@@ -10,7 +10,14 @@ const App = () => {
       <Header />
       <div className="container mx-auto mt-8">
         <Routes>
-          <Route path="/" element={<h1 className="text-3xl font-bold">Welcome to G3 Blog Post Management</h1>} />
+          <Route
+            path="/"
+            element={
+              <h1 className="text-3xl font-bold">
+                Welcome to G3 Blog Post Management
+              </h1>
+            }
+          />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
