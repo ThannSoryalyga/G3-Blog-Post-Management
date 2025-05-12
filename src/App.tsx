@@ -6,6 +6,7 @@ import Contact from "./pages/contact";
 import Home from "./pages/home";
 import Login from "./pages/login";
 import Register from "./pages/register";
+import SponsorPage from "./pages/ SponsorPage"; // ✅ New import
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/sponsor" element={<SponsorPage />} /> {/* ✅ New route */}
         </Routes>
       </div>
     </Router>
@@ -26,3 +28,4 @@ const App = () => {
 };
 
 export default App;
+
