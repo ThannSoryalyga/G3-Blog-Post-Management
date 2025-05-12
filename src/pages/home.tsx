@@ -1,10 +1,10 @@
-import feature1 from '../assets/images/feature1.png';
-import feature2 from '../assets/images/feature2.png';
-import feature3 from '../assets/images/feature3.png';
-import heroImage from '../assets/images/hero-image.png'; 
+import feature1 from "../assets/images/feature1.png";
+import feature2 from "../assets/images/feature2.png";
+import feature3 from "../assets/images/feature3.png";
+import heroImage from "../assets/images/hero-image.png";
+
 const Home = () => {
   return (
-    
     <div className="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-white min-h-screen">
       {/* Hero Section */}
       <section
@@ -24,7 +24,6 @@ const Home = () => {
         </div>
       </section>
 
-
       <section className="py-16">
         <div className="container mx-auto text-center px-4">
           <h2 className="text-4xl font-bold mb-12 hover:text-blue-500 transition-colors duration-300">
@@ -42,7 +41,8 @@ const Home = () => {
               </div>
               <h3 className="text-2xl font-bold mb-4">Easy Blog Management</h3>
               <p>
-                Create, edit, and organize your blogs with an intuitive interface.
+                Create, edit, and organize your blogs with an intuitive
+                interface.
               </p>
             </div>
 
@@ -59,7 +59,7 @@ const Home = () => {
                 Choose from a variety of themes to make your blogs stand out.
               </p>
             </div>
-          
+
             <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-transform duration-300">
               <div className="flex justify-center mb-4">
                 <img
@@ -70,14 +70,14 @@ const Home = () => {
               </div>
               <h3 className="text-2xl font-bold mb-4">Analytics Dashboard</h3>
               <p>
-                Track your blog performance with detailed analytics and insights.
+                Track your blog performance with detailed analytics and
+                insights.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-   
       <section className="bg-gray-100 dark:bg-gray-800 py-16">
         <div className="container mx-auto text-center px-4">
           <h2 className="text-4xl font-bold mb-12 hover:text-blue-500 transition-colors duration-300">
@@ -101,8 +101,8 @@ const Home = () => {
 
             <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-transform duration-300">
               <p className="italic mb-4">
-                "The analytics dashboard gives me all the insights I need to grow
-                my audience."
+                "The analytics dashboard gives me all the insights I need to
+                grow my audience."
               </p>
               <h4 className="font-bold">- Alice Johnson</h4>
             </div>
