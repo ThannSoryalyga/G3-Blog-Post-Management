@@ -4,7 +4,7 @@ import feature3 from "../assets/images/feature3.png";
 import heroImage from "../assets/images/hero-image.png";
 const Home = () => {
   return (
-    <div className="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-white min-h-screen">
+    <div className="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-white min-h-screen -mt-8">
       {/* Hero Section */}
       <section
         className="bg-cover bg-center bg-gradient-to-r from-blue-500 to-blue-700 dark:from-blue-700 dark:to-blue-900 text-white py-20"

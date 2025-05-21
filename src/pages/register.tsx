@@ -1,6 +1,6 @@
 const Register = () => {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-white">
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-500 text-gray-800 dark:text-white -mt-8">
         <div className="w-full max-w-md bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md">
           <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>
           <form>
@@ -39,7 +39,7 @@ const Register = () => {
             </div>
             <button
               type="submit"
-              className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors duration-300"
+              className="w-full bg-white text-blue-500 py-2 px-4 rounded-lg hover:bg-blue-100 transition-colors font-medium duration-300"
             >
               Register
             </button>
