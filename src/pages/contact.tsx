@@ -1,6 +1,9 @@
+import Header from "../components/header";
 const Contact = () => {
     return (
-      <div className="p-8 font-sans">
+      <>
+      <Header />    
+        <div className="p-8 font-sans">
         <h1 className="text-3xl font-bold mb-4">Contact Us</h1>
         <p className="text-lg">
           Have questions? Reach out to us at{' '}
@@ -12,6 +15,8 @@ const Contact = () => {
           </a>.
         </p>
       </div>
+      </>
+
     );
   };
   
