@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./components/header";
 import About from "./pages/about";
 import Blogs from "./pages/blogs";
 import Contact from "./pages/contact";
@@ -11,10 +10,12 @@ import Login from "./pages/login";
 
 const App = () => {
   return (
+     <>
     <Router>
-      <Header />
-      <div className="container mx-auto mt-8">
+   
         <Routes>
+          <Route path="/" element={<Home />} />
+
           <Route path="/home" element={<Home />} />
           <Route
             path="/"
@@ -33,8 +34,9 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
-      </div>
+     
     </Router>
+    </>
   );
 };
 

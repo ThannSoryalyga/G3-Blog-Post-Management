@@ -1,7 +1,7 @@
 import feature1 from '../assets/images/feature1.png';
 import feature2 from '../assets/images/feature2.png';
 import feature3 from '../assets/images/feature3.png';
-import heroImage from '../assets/images/hero-image.png'; 
+import heroImage from '../assets/images/hero-image.png';
 import Header from '../components/header';
 import Footer from '../components/footer';
 
@@ -81,6 +81,38 @@ const Home = () => {
           </div>
         </section>
 
+        {/* Testimonials Section */}
+        <section className="bg-gray-100 dark:bg-gray-800 py-16">
+          <div className="container mx-auto text-center px-4">
+            <h2 className="text-4xl font-bold mb-12 hover:text-blue-500 transition-colors duration-300">
+              What Our Users Say
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-transform duration-300">
+                <p className="italic mb-4">
+                  "This platform has completely transformed the way I manage my
+                  blogs. Highly recommended!"
+                </p>
+                <h4 className="font-bold">- Thann Soryalyza</h4>
+              </div>
+              <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-transform duration-300">
+                <p className="italic mb-4">
+                  "The customizable themes are amazing. My blogs have never looked
+                  better!"
+                </p>
+                <h4 className="font-bold">- Hort Lymeng</h4>
+              </div>
+              <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-transform duration-300">
+                <p className="italic mb-4">
+                  "The analytics dashboard gives me all the insights I need to grow
+                  my audience."
+                </p>
+                <h4 className="font-bold">- Phoung Visal</h4>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Call to Action Section */}
         <section className="bg-gradient-to-r from-blue-500 to-blue-700 dark:from-blue-700 dark:to-blue-900 text-white py-16">
           <div className="container mx-auto text-center px-4">
@@ -91,7 +123,7 @@ const Home = () => {
               Join thousands of bloggers who trust G3 Blog Post Management.
             </p>
             <button className="bg-white text-blue-500 font-bold py-3 px-6 rounded-full shadow-lg hover:bg-gray-100 hover:scale-105 transition-transform duration-300">
-              Get Started
+              Get Start
             </button>
           </div>
         </section>

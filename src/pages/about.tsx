@@ -1,5 +1,9 @@
+import Header from "../components/header";
 const About = () => {
     return (
+      <>  
+       <Header />
+  
       <div className="p-8 font-sans">
         <h1 className="text-3xl font-bold mb-4">About Us</h1>
         <p className="text-lg">
@@ -7,6 +11,7 @@ const About = () => {
           and sharing blogs.
         </p>
       </div>
+      </>
     );
   };
   
