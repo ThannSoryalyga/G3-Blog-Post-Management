@@ -8,10 +8,12 @@ import Register from "./pages/register";
 
 const App = () => {
   return (
+     <>
     <Router>
-    
-    
+   
         <Routes>
+          <Route path="/" element={<Home />} />
+
           <Route path="/home" element={<Home />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/about" element={<About />} />
@@ -21,6 +23,7 @@ const App = () => {
         </Routes>
      
     </Router>
+    </>
   );
 };
 
