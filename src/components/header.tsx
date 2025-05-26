@@ -14,10 +14,10 @@ const Header = () => {
         {/* Logo */}
         <div className="text-lg font-extrabold tracking-wide">
           <Link
-            to="/home"
+            to="/"
             className="hover:text-blue-500 transition-colors duration-300"
           >
-            G3 Blog Post Management
+            Blog Post
           </Link>
         </div>
 

@@ -1,9 +1,9 @@
-import feature1 from '../assets/images/feature1.png';
-import feature2 from '../assets/images/feature2.png';
-import feature3 from '../assets/images/feature3.png';
-import heroImage from '../assets/images/hero-image.png';
-import Header from '../components/header';
-import Footer from '../components/footer';
+import feature1 from "../assets/images/feature1.png";
+import feature2 from "../assets/images/feature2.png";
+import feature3 from "../assets/images/feature3.png";
+import heroImage from "../assets/images/hero-image.png";
+import Header from "../components/header";
+import Footer from "../components/footer";
 
 const Home = () => {
   return (
@@ -21,7 +21,8 @@ const Home = () => {
               Welcome to Blog Post.
             </h1>
             <p className="text-lg mb-8">
-              Effortlessly manage and share your blogs with our powerful platform.
+              Effortlessly manage and share your blogs with our powerful
+              platform.
             </p>
             <button className="bg-white text-blue-500 font-bold py-3 px-6 rounded-full shadow-lg hover:bg-gray-100 hover:scale-105 transition-transform duration-300">
               Get Started
@@ -46,7 +47,9 @@ const Home = () => {
                   />
                 </div>
                 <h3 className="text-2xl font-bold mb-4">Post</h3>
-                <p>Create and manage your blogs with ease. Our intuitive editor</p>
+                <p>
+                  Create and manage your blogs with ease. Our intuitive editor
+                </p>
               </div>
 
               {/* Feature 2 */}
@@ -73,8 +76,8 @@ const Home = () => {
                 </div>
                 <h3 className="text-2xl font-bold mb-4">Blog</h3>
                 <p>
-                  Share your thoughts and ideas with the world. Our platform makes it
-                  easy to publish and promote your blogs.
+                  Share your thoughts and ideas with the world. Our platform
+                  makes it easy to publish and promote your blogs.
                 </p>
               </div>
             </div>
@@ -97,15 +100,15 @@ const Home = () => {
               </div>
               <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-transform duration-300">
                 <p className="italic mb-4">
-                  "The customizable themes are amazing. My blogs have never looked
-                  better!"
+                  "The customizable themes are amazing. My blogs have never
+                  looked better!"
                 </p>
                 <h4 className="font-bold">- Hort Lymeng</h4>
               </div>
               <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-transform duration-300">
                 <p className="italic mb-4">
-                  "The analytics dashboard gives me all the insights I need to grow
-                  my audience."
+                  "The analytics dashboard gives me all the insights I need to
+                  grow my audience."
                 </p>
                 <h4 className="font-bold">- Phoung Visal</h4>
               </div>

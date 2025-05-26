@@ -16,7 +16,8 @@ const Blogs: React.FC = () => {
     {
       id: 2,
       title: "How to Stay Productive",
-      description: "Tips and tricks for staying focused and getting things done.",
+      description:
+        "Tips and tricks for staying focused and getting things done.",
       imageUrl: "https://picsum.photos/id/1016/600/400 ",
     },
     {
@@ -25,6 +26,7 @@ const Blogs: React.FC = () => {
       description: "Understanding useEffect, useState, and more.",
       imageUrl: "https://picsum.photos/id/1019/600/400 ",
     },
+
   ];
 
   return (

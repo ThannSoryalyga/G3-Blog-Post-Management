@@ -1,6 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import Header from "./components/header";
+// import Footer from "./components/footer";
 import About from "./pages/about";
 import Blogs from "./pages/blogs";
+import Detailblog from "./pages/detail-blog";
 import Contact from "./pages/contact";
 import Card from "./components/card";
 import Home from "./pages/home";
@@ -10,13 +13,10 @@ import Login from "./pages/login";
 
 const App = () => {
   return (
-     <>
-    <Router>
-   
+    <>
+      <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-
-          <Route path="/home" element={<Home />} />
           <Route
             path="/"
             element={
@@ -26,6 +26,7 @@ const App = () => {
             }
           />
           <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blog/:id" element={<Detailblog />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/card" element={<Card />} />
@@ -34,8 +35,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
-     
-    </Router>
+      </Router>
     </>
   );
 };
