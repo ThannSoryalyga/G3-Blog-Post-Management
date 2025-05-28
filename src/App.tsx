@@ -4,38 +4,71 @@ import Blogs from "./pages/blogs";
 import Contact from "./pages/contact";
 import Card from "./components/card";
 import Home from "./pages/home";
-import SponsorPage from "./pages/ SponsorPage"; // ✅ New import
+import SponsorPage from "./pages/ SponsorPage";
 import Register from "./pages/register";
 import Login from "./pages/login";
+import ProtectedRoute from "./components/ProtectedRoute"; // <-- Add this import
 
 const App = () => {
   return (
-     <>
-    <Router>
-   
+    <>
+      <Router>
         <Routes>
-          <Route path="/" element={<Home />} />
+          {/* Public Routes */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
 
-          <Route path="/home" element={<Home />} />
+          {/* Protected Routes */}
           <Route
             path="/"
             element={
-              <h1 className="text-3xl font-bold">
-                Welcome to G3 Blog Post Management
-              </h1>
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
             }
           />
-          <Route path="/blogs" element={<Blogs />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/card" element={<Card />} />
-          <Route path="/sponsor" element={<SponsorPage />} />{" "}
-          {/* ✅ New route */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route
+            path="/blogs"
+            element={
+              <ProtectedRoute>
+                <Blogs />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <ProtectedRoute>
+                <About />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+              <ProtectedRoute>
+                <Contact />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/card"
+            element={
+              <ProtectedRoute>
+                <Card />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/sponsor"
+            element={
+              <ProtectedRoute>
+                <SponsorPage />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
-     
-    </Router>
+      </Router>
     </>
   );
 };
