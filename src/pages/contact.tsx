@@ -1,6 +1,6 @@
-
-import React, { useEffect, useState } from "react";
-
+import React, { useState } from "react";
+import Header from "../components/header";
+import Footer from "../components/footer";
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
@@ -21,6 +21,8 @@ export default function Contact() {
   };
 
   return (
+    <>
+    <Header/>
     <div className="flex justify-center items-center min-h-screen bg-gray-50 p-4">
       <form
         onSubmit={handleSubmit}
@@ -83,5 +85,7 @@ export default function Contact() {
         </button>
       </form>
     </div>
+    <Footer/>
+    </>
   );
 }

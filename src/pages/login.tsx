@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -25,6 +26,7 @@ const Login = () => {
     } catch (err: any) {
       setError(err.message || "Login failed");
     }
+
   };
 
   return (
