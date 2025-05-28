@@ -5,8 +5,7 @@ import Header from "../components/header";
 import Footer from "../components/footer"; // Import Footer
 
 const Blogs: React.FC = () => {
-  // Inline blog data (could be moved to a separate file)
-  const blogs = [
+   const blogs = [
     {
       id: 1,
       title: "Why I Started Blogging",
