@@ -38,7 +38,6 @@ const SponsorPage: React.FC = () => {
       <p className="mb-8 text-lg text-center">
         We're proud to be supported by these amazing companies!
       </p>
-
       {/* Sponsor Logos Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
         {sponsors.map((sponsor, index) => (
