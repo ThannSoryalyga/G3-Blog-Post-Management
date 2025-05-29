@@ -1,11 +1,24 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  // Check if user is logged in
+  const isLoggedIn = !!localStorage.getItem("token");
+
+  // Dummy avatar image (replace with user image if available)
+  const avatarUrl =
+    "https://ui-avatars.com/api/?name=User&background=0D8ABC&color=fff";
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login", { replace: true });
   };
 
   return (
@@ -56,28 +69,48 @@ const Header = () => {
               key={index}
               to={`/${item.toLowerCase()}`}
               className="block md:inline-block text-lg font-medium text-gray-600 dark:text-gray-300 hover:text-blue-500 transition-colors duration-300"
-              onClick={() => setIsMenuOpen(false)} // Close menu on link click
+              onClick={() => setIsMenuOpen(false)}
             >
               {item}
             </Link>
           ))}
 
-          {/* Log In and Register Buttons */}
-          <div className="flex flex-col md:flex-row md:space-x-4 mt-4 md:mt-0">
-            <Link
-              to="/login"
-              className="bg-blue-500 text-white font-bold py-2 px-4 rounded-full hover:bg-blue-600 transition-colors duration-300"
-              onClick={() => setIsMenuOpen(false)} // Close menu on button click
-            >
-              Log In
-            </Link>
-            <Link
-              to="/register"
-              className="bg-gray-200 text-gray-800 font-bold py-2 px-4 rounded-full hover:bg-gray-300 transition-colors duration-300"
-              onClick={() => setIsMenuOpen(false)} // Close menu on button click
-            >
-              Register
-            </Link>
+          {/* Auth Buttons or Avatar */}
+          <div className="flex flex-col md:flex-row md:items-center md:space-x-4 mt-4 md:mt-0">
+            {!isLoggedIn ? (
+              <>
+                <Link
+                  to="/login"
+                  className="bg-blue-500 text-white font-bold py-2 px-4 rounded-full hover:bg-blue-600 transition-colors duration-300 mb-2 md:mb-0"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Log In
+                </Link>
+                <Link
+                  to="/register"
+                  className="bg-gray-200 text-gray-800 font-bold py-2 px-4 rounded-full hover:bg-gray-300 transition-colors duration-300"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Register
+                </Link>
+              </>
+            ) : (
+              <div className="flex items-center space-x-3">
+                <Link to="/profile" title="Profile">
+                  <img
+                    src={avatarUrl}
+                    alt="avatar"
+                    className="w-10 h-10 rounded-full border-2 border-blue-500 cursor-pointer hover:scale-105 transition-transform"
+                  />
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="bg-red-500 text-white font-bold py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-300"
+                >
+                  Log Out
+                </button>
+              </div>
+            )}
           </div>
         </nav>
       </div>

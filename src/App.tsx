@@ -5,10 +5,11 @@ import Detailblog from "./pages/detail-blog";
 import Contact from "./pages/contact";
 import Card from "./components/card";
 import Home from "./pages/home";
-import SponsorPage from "./pages/SponsorPage";
+import SponsorPage from "./pages/ SponsorPage";
 import Register from "./pages/register";
 import Login from "./pages/login";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Profile from "./pages/Profile";
 
 const App = () => {
   return (
@@ -68,7 +69,15 @@ const App = () => {
           }
         />
         <Route
-          path="/sponsor"
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/SponsorPage"
           element={
             <ProtectedRoute>
               <SponsorPage />
