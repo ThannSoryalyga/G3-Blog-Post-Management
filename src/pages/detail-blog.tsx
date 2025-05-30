@@ -1,82 +1,197 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import Header from "../components/header";
+import axios from "axios";
+import parse from "html-react-parser";
 import Footer from "../components/footer";
-import { Link } from "react-router-dom";
-const DetailBlog = () => {
+
+const STRAPI_URL = "http://localhost:1337";
+
+interface Author {
+  id: number;
+  username: string;
+  avatar?: { url: string };
+}
+
+interface Category {
+  id: number;
+  title: string;
+}
+
+interface Image {
+  url: string;
+}
+
+interface BlogPost {
+  id: number;
+  title: string;
+  content: string;
+  author: Author | null;
+  category: Category | null;
+  image: Image | null;
+}
+
+const BlogDetail = () => {
+  const { id } = useParams<{ id: string }>();
+  const userId = localStorage.getItem("userId");
+  const [post, setPost] = useState<BlogPost | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [commet, setComment] = useState<string>("");
+  const [listComment, setListComment] = useState<any[]>([]);
+  useEffect(() => {
+    const fetchComments = async () => {
+      try {
+        const response = await axios.get(
+          ` ${STRAPI_URL}/api/comments?filters[blog][documentId][$eq]=${id}&populate=*`
+        );
+        const commentsData = response.data.data;
+        setListComment(commentsData);
+      } catch (err) {
+        console.error("Failed to fetch comments:", err);
+      }
+    };
+
+    fetchComments();
+  }, [listComment]);
+
+  console.log(listComment);
+
+  useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        const response = await axios.get(
+          `${STRAPI_URL}/api/blogs/${id}?populate=*`
+        );
+
+        // Strapi response in data.data
+        const data = response.data.data;
+        setPost(data);
+      } catch (err) {
+        setError("Failed to fetch blog post.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPost();
+  }, [id]);
+
+  if (loading)
+    return <p className="py-50 px-150 font-m text-2xl">Loading...</p>;
+  // if (error) return <p style={{ color: "red" }}>{error}</p>;
+  // if (!post) return <p>No blog post found.</p>;
+
+  const handleChangeComment = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setComment(e.target.value);
+  };
+
+  const handleSubmitComment = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const data = axios.post(`${STRAPI_URL}/api/comments`, {
+      data: {
+        content: commet,
+        users: userId,
+        blog: post?.id,
+      },
+    });
+    setComment("");
+    console.log(data);
+  };
 
   return (
     <>
-    <Header />
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 ">
-    <div className="bg-white  border  justify-center tweet-border max-w-xl w-full rounded-lg  sm:rounded-lg  shadow-sm -mt-10 ">
-      <article className="p-4 flex space-x-3">
-       
-        <div className="flex-shrink-0">
-          <img
-            className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover"
-            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&q=80"
-            alt="User Avatar"
-          />
-        </div>
-        
-        <div className="flex-1 min-w-0">
+      <Header />
+      <button
+        onClick={() => window.history.back()}
+        className="ml-8 mt-5 font-bold font-2xl text-blue-400"
+      >
+        {" "}
+        ⬅️Back
+      </button>
+      <div style={{ maxWidth: 800, margin: "2rem auto", padding: "0 1rem" }}>
+        <img
+          src={post?.image?.formats?.thumbnail?.url}
+          // alt={post.title}
+          style={{
+            width: "70%",
+            borderRadius: 8,
+            marginBottom: "1rem",
+            justifyContent: "center",
+            display: "block",
+            marginLeft: "auto",
+            marginRight: "auto",
+          }}
+        />
+        <p>
+          <strong className="text-amber-500">Author:</strong>{" "}
+          {post?.author?.username}
+        </p>
 
-          <div className="flex justify-between items-center mb-1">
-            <div className="flex items-baseline space-x-1 text-sm min-w-0">
-              <span className="font-bold text-black  truncate hover:underline cursor-pointer">
-                Full Name
-              </span>
-              <span className="text-black  truncate">
-                @username
-              </span>
-              <span className="text-black">·</span>
-              <span className="text-black hover:underline cursor-pointer whitespace-nowrap">
-                3h
-              </span>
-            </div>
-            <button
-              aria-label="More options"
-              className="text-gray-500 dark:text-gray-400 hover:bg-blue-100 hover:text-blue-500 dark:hover:bg-blue-900 dark:hover:bg-opacity-50 rounded-full p-1.5 -mr-1.5"
-            >
-              <svg
-                className="w-5 h-5"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-              </svg>
-            </button>
+        {/* <p>
+        <strong className="text-amber-500">Category:</strong> {post?.categary?.title}
+      </p> */}
+        <h1
+          className="font-bold"
+          style={{ fontSize: "2rem", marginBottom: "1rem" }}
+        >
+          {post?.title}
+        </h1>
+
+        <div>{parse(post?.Content)}</div>
+        {/* <div dangerouslySetInnerHTML={{ __html: post.content }} /> */}
+
+        <div>
+          <div className="max-w-3xl mx-auto mt-10 px-4">
+            <h2 className="text-2xl font-bold mb-6 text-gray-800">
+              💬 Comments
+            </h2>
+            <ul className="space-y-6">
+              {listComment.map((comment) => (
+                <li
+                  key={comment.id}
+                  className="bg-white rounded-xl shadow-md p-4 border border-gray-100"
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 font-bold">
+                      {/* {comment.attributes?.author?.username?.[0] || "U"} */}
+                    </div>
+                    <div>
+                      {/* <p className="text-sm text-gray-600">
+                        {new Date(
+                          comment.attributes.createdAt
+                        ).toLocaleString()}
+                      </p> */}
+                      <p className="mt-1 text-gray-800">{comment?.content}</p>
+                    </div>
+                  </div>
+                </li>
+              ))}
+
+              {listComment.length === 0 && (
+                <p className="text-gray-500">No comments yet.</p>
+              )}
+            </ul>
           </div>
-          {/* Tweet Content */}
-          <p className="text-black text-sm sm:text-base leading-normal mb-2">
-          A deep dive into my journey into content creation.{" "}
-            <a href="#" className="text-blue-500 hover:underline">
-              #webdev
-            </a>{" "}
-            <a href="#" className="text-blue-500 hover:underline">
-              #tailwindcss
-            </a>{" "}
-            <a href="#" className="text-blue-500 hover:underline">
-              @tailwindcss
-            </a>
-          </p>
-          {/* Media (Optional) */}
-          <div className="mt-3 rounded-xl border tweet-border overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1605379399642-870262d3d051?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-              alt="Tweet media content"
-              className="w-full object-cover aspect-video"
-            />
-          </div>  
-          <Link to="/blogs" className="inline-block text-blue-600 hover:underline mt-3">Back blog</Link>
         </div>
-      </article>
-    </div>
-    
-    </div>
-    <Footer/>
+
+        <form onSubmit={handleSubmitComment}>
+          <input
+            onChange={handleChangeComment}
+            value={commet}
+            type="text"
+            placeholder="Leave a comment..."
+            className="w-full p-2 border border-gray-300 rounded-lg mt-4"
+          />
+          <button type="submit">
+            <span className="text-blue-500">Submit</span>
+          </button>
+        </form>
+      </div>
+
+      <Footer />
     </>
   );
 };
 
-export default DetailBlog;
+export default BlogDetail;

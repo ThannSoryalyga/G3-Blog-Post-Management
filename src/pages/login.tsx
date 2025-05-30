@@ -32,9 +32,10 @@ const Login = () => {
       if (!res.ok) {
         throw new Error(data?.error?.message || "Login failed");
       }
-
+      console.log(data);
       localStorage.setItem("token", data.jwt);
-      navigate("/", { replace: true });
+      localStorage.setItem("userId", data.user.documentId);
+      // navigate("/", { replace: true });
     } catch (err) {
       if (err instanceof Error) {
         setErrorMsg(err.message);
